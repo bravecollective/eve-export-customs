@@ -234,9 +234,9 @@ class App:
 
                         print("Checking {region} contract {contract_id}...".format(region=region_name, contract_id=each_contract["contract_id"]))
 
-                        if each_contract["issuer_corporation_id"] in self.corporations:
+                        if each_contract["issuer_corporation_id"] in self.corporations and each_contract["type"] == "item_exchange":
 
-                            print("{contract_id} in target corporation {corporation_id}. Processing...".format(contract_id=each_contract["contract_id"], corporation_id=each_contract["issuer_corporation_id"]))
+                            print("Item Exchange {contract_id} in target corporation {corporation_id}. Processing...".format(contract_id=each_contract["contract_id"], corporation_id=each_contract["issuer_corporation_id"]))
 
                             self.contracts[each_contract["contract_id"]] = Contract(
                                 id = each_contract["contract_id"], 
