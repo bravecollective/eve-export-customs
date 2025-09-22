@@ -1,0 +1,5 @@
+# config
+/config/config.ini
+
+# caches
+__pycache__/
