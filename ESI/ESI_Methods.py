@@ -48,6 +48,16 @@ class Methods(ESI_Base.Base):
             retries = (arguments["retries"] if "retries" in arguments else 0)
         )
 
+    def names(self, arguments):
+    
+        return self.makeRequest(
+            endpoint = "/universe/names/",
+            method = "POST",
+            payload = arguments["items"],
+            url = (self.esiURL + "latest/universe/names/?datasource=tranquility"), 
+            retries = (arguments["retries"] if "retries" in arguments else 0)
+        )
+
     def regions(self, arguments):
     
         return self.makeRequest(
@@ -73,3 +83,12 @@ class Methods(ESI_Base.Base):
             retries = (arguments["retries"] if "retries" in arguments else 0)
         )
 
+    def types(self, arguments):
+
+        page = (arguments["page"] if "page" in arguments else 1) 
+    
+        return self.makeRequest(
+            endpoint = "/universe/types/",
+            url = (self.esiURL + "latest/universe/types/?datasource=tranquility&page=" + str(page)), 
+            retries = (arguments["retries"] if "retries" in arguments else 0)
+        )

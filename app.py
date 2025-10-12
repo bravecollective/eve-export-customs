@@ -94,7 +94,7 @@ class Contract:
 
                     if each_item["is_included"]:
 
-                        self.unique_items[each_item["type_id"]] = type_data[str(each_item["type_id"])]
+                        self.unique_items[each_item["type_id"]] = type_data[str(each_item["type_id"])] if str(each_item["type_id"]) in type_data else ("UNKNOWN TYPE " + str(each_item["type_id"]))
                 
             else:
                 

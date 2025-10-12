@@ -37,6 +37,12 @@ class MethodRegister(ESI_Methods.Methods):
         )
 
         self.register(
+            endpoint = "/universe/names/", 
+            method = "names",
+            requiredArguments = ["items"]
+        )
+
+        self.register(
             endpoint = "/universe/regions/{region_id}/", 
             method = "regions",
             requiredArguments = ["region_id"]
@@ -54,6 +60,12 @@ class MethodRegister(ESI_Methods.Methods):
             requiredArguments = ["structure_id"]
         )
     
+        self.register(
+            endpoint = "/universe/types/", 
+            method = "types",
+            requiredArguments = []
+        )
+
     def register(self, endpoint, method, requiredArguments):
     
         self.methodList[endpoint] = {"Name": method, "Required Arguments": requiredArguments}
