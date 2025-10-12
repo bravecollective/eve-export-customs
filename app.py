@@ -86,7 +86,7 @@ class Contract:
         while (current_page <= max_page):
             items_request = esi_handler.call("/contracts/public/items/{contract_id}/", contract_id=self.id, page=current_page, retries=2)
             
-            if items_request["Success"]:
+            if items_request["Success"] and items_request["Status Code"] != 204:
                 
                 max_page = int(items_request["Headers"]["X-Pages"])
                 
@@ -95,6 +95,11 @@ class Contract:
                     if each_item["is_included"]:
 
                         self.unique_items[each_item["type_id"]] = type_data[str(each_item["type_id"])] if str(each_item["type_id"]) in type_data else ("UNKNOWN TYPE " + str(each_item["type_id"]))
+
+            # Contract was recently accepted
+            elif items_request["Status Code"] == 204:
+                print("{ID} was recently accepted.".format(ID=self.id))
+                break
                 
             else:
                 
